@@ -1,0 +1,237 @@
+﻿{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome",
+    "definitions": {
+        "Welcome": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "QuickTypeRecipe.Result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/QuickTypeRecipeResult"
+                    }
+                }
+            },
+            "required": [
+                "QuickTypeRecipe.Result"
+            ],
+            "title": "Welcome"
+        },
+        "QuickTypeRecipeResult": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "highlights": {
+                    "type": "array",
+                    "items": {}
+                },
+                "index": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/Result"
+                }
+            },
+            "required": [
+                "highlights",
+                "index",
+                "result",
+                "type"
+            ],
+            "title": "QuickTypeRecipeResult"
+        },
+        "Result": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "annotation_count": {
+                    "type": "integer"
+                },
+                "api_path": {
+                    "type": "string"
+                },
+                "full_title": {
+                    "type": "string"
+                },
+                "header_image_thumbnail_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "header_image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "lyrics_owner_id": {
+                    "type": "integer"
+                },
+                "lyrics_state": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "pyongs_count": {
+                    "type": "integer"
+                },
+                "song_art_image_thumbnail_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "song_art_image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "stats": {
+                    "$ref": "#/definitions/Stats"
+                },
+                "title": {
+                    "type": "integer"
+                },
+                "title_with_featured": {
+                    "type": "integer"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "primary_artist": {
+                    "$ref": "#/definitions/PrimaryArtist"
+                }
+            },
+            "required": [
+                "annotation_count",
+                "api_path",
+                "full_title",
+                "header_image_thumbnail_url",
+                "header_image_url",
+                "id",
+                "lyrics_owner_id",
+                "lyrics_state",
+                "path",
+                "primary_artist",
+                "pyongs_count",
+                "song_art_image_thumbnail_url",
+                "song_art_image_url",
+                "stats",
+                "title",
+                "title_with_featured",
+                "url"
+            ],
+            "title": "Result"
+        },
+        "PrimaryArtist": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "api_path": {
+                    "type": "string"
+                },
+                "header_image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "is_meme_verified": {
+                    "type": "boolean"
+                },
+                "is_verified": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                }
+            },
+            "required": [
+                "api_path",
+                "header_image_url",
+                "id",
+                "image_url",
+                "is_meme_verified",
+                "is_verified",
+                "name",
+                "url"
+            ],
+            "title": "PrimaryArtist"
+        },
+        "Stats": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "unreviewed_annotations": {
+                    "type": "integer"
+                },
+                "hot": {
+                    "type": "boolean"
+                },
+                "pageviews": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "hot",
+                "pageviews",
+                "unreviewed_annotations"
+            ],
+            "title": "Stats"
+        }
+    }
+}

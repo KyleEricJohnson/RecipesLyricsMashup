@@ -28,7 +28,7 @@ namespace RecipeLyricsMashup.Pages
                 QuickTypeRecipe.Recipe recipeResult = QuickTypeRecipe.Recipe.FromJson(recipePuppyJson);
                 QuickTypeRecipe.Result[] recipes = recipeResult.Results;
                 
-                string accessToken = System.IO.File.ReadAllText("APIToken.txt");
+                string accessToken = System.IO.File.ReadAllText("WeatherAPIKey.txt");
                 string geniusEndpoint = "https://api.genius.com/search?q=jambalaya&access_token=" + accessToken;
                 
                 string geniusJson = webClient.DownloadString(geniusEndpoint);

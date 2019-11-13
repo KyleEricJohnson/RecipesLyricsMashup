@@ -1,0 +1,1051 @@
+﻿{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/SearchResult",
+    "definitions": {
+        "SearchResult": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "meta": {
+                    "$ref": "#/definitions/Meta"
+                },
+                "response": {
+                    "$ref": "#/definitions/Response"
+                }
+            },
+            "required": [
+                "meta",
+                "response"
+            ],
+            "title": "SearchResult"
+        },
+        "Meta": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "status": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status"
+            ],
+            "title": "Meta"
+        },
+        "Response": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "song": {
+                    "$ref": "#/definitions/Song"
+                }
+            },
+            "required": [
+                "song"
+            ],
+            "title": "Response"
+        },
+        "Song": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "annotation_count": {
+                    "type": "integer"
+                },
+                "api_path": {
+                    "type": "string"
+                },
+                "apple_music_id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "apple_music_player_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "description": {
+                    "$ref": "#/definitions/Description"
+                },
+                "embed_content": {
+                    "type": "string"
+                },
+                "featured_video": {
+                    "type": "boolean"
+                },
+                "full_title": {
+                    "type": "string"
+                },
+                "header_image_thumbnail_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "header_image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "lyrics_owner_id": {
+                    "type": "integer"
+                },
+                "lyrics_state": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "pyongs_count": {
+                    "type": "integer"
+                },
+                "recording_location": {
+                    "type": "null"
+                },
+                "release_date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "song_art_image_thumbnail_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "song_art_image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "stats": {
+                    "$ref": "#/definitions/Stats"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "title_with_featured": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "current_user_metadata": {
+                    "$ref": "#/definitions/SongCurrentUserMetadata"
+                },
+                "album": {
+                    "$ref": "#/definitions/Album"
+                },
+                "custom_performances": {
+                    "type": "array",
+                    "items": {}
+                },
+                "description_annotation": {
+                    "$ref": "#/definitions/DescriptionAnnotation"
+                },
+                "featured_artists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Artist"
+                    }
+                },
+                "lyrics_marked_complete_by": {
+                    "type": "null"
+                },
+                "media": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Media"
+                    }
+                },
+                "primary_artist": {
+                    "$ref": "#/definitions/Artist"
+                },
+                "producer_artists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Artist"
+                    }
+                },
+                "song_relationships": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SongRelationship"
+                    }
+                },
+                "verified_annotations_by": {
+                    "type": "array",
+                    "items": {}
+                },
+                "verified_contributors": {
+                    "type": "array",
+                    "items": {}
+                },
+                "verified_lyrics_by": {
+                    "type": "array",
+                    "items": {}
+                },
+                "writer_artists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Artist"
+                    }
+                }
+            },
+            "required": [
+                "album",
+                "annotation_count",
+                "api_path",
+                "apple_music_id",
+                "apple_music_player_url",
+                "current_user_metadata",
+                "custom_performances",
+                "description",
+                "description_annotation",
+                "embed_content",
+                "featured_artists",
+                "featured_video",
+                "full_title",
+                "header_image_thumbnail_url",
+                "header_image_url",
+                "id",
+                "lyrics_marked_complete_by",
+                "lyrics_owner_id",
+                "lyrics_state",
+                "media",
+                "path",
+                "primary_artist",
+                "producer_artists",
+                "pyongs_count",
+                "recording_location",
+                "release_date",
+                "song_art_image_thumbnail_url",
+                "song_art_image_url",
+                "song_relationships",
+                "stats",
+                "title",
+                "title_with_featured",
+                "url",
+                "verified_annotations_by",
+                "verified_contributors",
+                "verified_lyrics_by",
+                "writer_artists"
+            ],
+            "title": "Song"
+        },
+        "Album": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "api_path": {
+                    "type": "string"
+                },
+                "cover_art_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "full_title": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "artist": {
+                    "$ref": "#/definitions/Artist"
+                }
+            },
+            "required": [
+                "api_path",
+                "artist",
+                "cover_art_url",
+                "full_title",
+                "id",
+                "name",
+                "url"
+            ],
+            "title": "Album"
+        },
+        "SongCurrentUserMetadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "excluded_permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "interactions": {
+                    "$ref": "#/definitions/PurpleInteractions"
+                },
+                "relationships": {
+                    "$ref": "#/definitions/IqByAction"
+                },
+                "iq_by_action": {
+                    "$ref": "#/definitions/IqByAction"
+                }
+            },
+            "required": [
+                "excluded_permissions",
+                "interactions",
+                "iq_by_action",
+                "permissions",
+                "relationships"
+            ],
+            "title": "SongCurrentUserMetadata"
+        },
+        "PurpleInteractions": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "pyong": {
+                    "type": "boolean"
+                },
+                "following": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "following",
+                "pyong"
+            ],
+            "title": "PurpleInteractions"
+        },
+        "IqByAction": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "IqByAction"
+        },
+        "Description": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "plain": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "plain"
+            ],
+            "title": "Description"
+        },
+        "DescriptionAnnotation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "_type": {
+                    "type": "string"
+                },
+                "annotator_id": {
+                    "type": "integer"
+                },
+                "annotator_login": {
+                    "type": "string"
+                },
+                "api_path": {
+                    "type": "string"
+                },
+                "classification": {
+                    "type": "string"
+                },
+                "fragment": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_description": {
+                    "type": "boolean"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "range": {
+                    "$ref": "#/definitions/Range"
+                },
+                "song_id": {
+                    "type": "integer"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "verified_annotator_ids": {
+                    "type": "array",
+                    "items": {}
+                },
+                "annotatable": {
+                    "$ref": "#/definitions/Annotatable"
+                },
+                "annotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Annotation"
+                    }
+                }
+            },
+            "required": [
+                "_type",
+                "annotatable",
+                "annotations",
+                "annotator_id",
+                "annotator_login",
+                "api_path",
+                "classification",
+                "fragment",
+                "id",
+                "is_description",
+                "path",
+                "range",
+                "song_id",
+                "url",
+                "verified_annotator_ids"
+            ],
+            "title": "DescriptionAnnotation"
+        },
+        "Annotatable": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "api_path": {
+                    "type": "string"
+                },
+                "client_timestamps": {
+                    "$ref": "#/definitions/ClientTimestamps"
+                },
+                "context": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg"
+                    ]
+                },
+                "link_title": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                }
+            },
+            "required": [
+                "api_path",
+                "client_timestamps",
+                "context",
+                "id",
+                "image_url",
+                "link_title",
+                "title",
+                "type",
+                "url"
+            ],
+            "title": "Annotatable"
+        },
+        "ClientTimestamps": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "updated_by_human_at": {
+                    "type": "integer"
+                },
+                "lyrics_updated_at": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "lyrics_updated_at",
+                "updated_by_human_at"
+            ],
+            "title": "ClientTimestamps"
+        },
+        "Annotation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "api_path": {
+                    "type": "string"
+                },
+                "body": {
+                    "$ref": "#/definitions/Description"
+                },
+                "comment_count": {
+                    "type": "integer"
+                },
+                "community": {
+                    "type": "boolean"
+                },
+                "custom_preview": {
+                    "type": "null"
+                },
+                "has_voters": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "pinned": {
+                    "type": "boolean"
+                },
+                "share_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "source": {
+                    "type": "null"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "verified": {
+                    "type": "boolean"
+                },
+                "votes_total": {
+                    "type": "integer"
+                },
+                "current_user_metadata": {
+                    "$ref": "#/definitions/AnnotationCurrentUserMetadata"
+                },
+                "authors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Author"
+                    }
+                },
+                "cosigned_by": {
+                    "type": "array",
+                    "items": {}
+                },
+                "rejection_comment": {
+                    "type": "null"
+                },
+                "verified_by": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "api_path",
+                "authors",
+                "body",
+                "comment_count",
+                "community",
+                "cosigned_by",
+                "current_user_metadata",
+                "custom_preview",
+                "has_voters",
+                "id",
+                "pinned",
+                "rejection_comment",
+                "share_url",
+                "source",
+                "state",
+                "url",
+                "verified",
+                "verified_by",
+                "votes_total"
+            ],
+            "title": "Annotation"
+        },
+        "Author": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "attribution": {
+                    "type": "number"
+                },
+                "pinned_role": {
+                    "type": "null"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
+                }
+            },
+            "required": [
+                "attribution",
+                "pinned_role",
+                "user"
+            ],
+            "title": "Author"
+        },
+        "User": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "api_path": {
+                    "type": "string"
+                },
+                "avatar": {
+                    "$ref": "#/definitions/Avatar"
+                },
+                "header_image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".png"
+                    ]
+                },
+                "human_readable_role_for_display": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "iq": {
+                    "type": "integer"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role_for_display": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "current_user_metadata": {
+                    "$ref": "#/definitions/UserCurrentUserMetadata"
+                }
+            },
+            "required": [
+                "api_path",
+                "avatar",
+                "current_user_metadata",
+                "header_image_url",
+                "human_readable_role_for_display",
+                "id",
+                "iq",
+                "login",
+                "name",
+                "role_for_display",
+                "url"
+            ],
+            "title": "User"
+        },
+        "Avatar": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "tiny": {
+                    "$ref": "#/definitions/Medium"
+                },
+                "thumb": {
+                    "$ref": "#/definitions/Medium"
+                },
+                "small": {
+                    "$ref": "#/definitions/Medium"
+                },
+                "medium": {
+                    "$ref": "#/definitions/Medium"
+                }
+            },
+            "required": [
+                "medium",
+                "small",
+                "thumb",
+                "tiny"
+            ],
+            "title": "Avatar"
+        },
+        "Medium": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".png"
+                    ]
+                },
+                "bounding_box": {
+                    "$ref": "#/definitions/BoundingBox"
+                }
+            },
+            "required": [
+                "bounding_box",
+                "url"
+            ],
+            "title": "Medium"
+        },
+        "BoundingBox": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "width": {
+                    "type": "integer"
+                },
+                "height": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "height",
+                "width"
+            ],
+            "title": "BoundingBox"
+        },
+        "UserCurrentUserMetadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "permissions": {
+                    "type": "array",
+                    "items": {}
+                },
+                "excluded_permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "interactions": {
+                    "$ref": "#/definitions/FluffyInteractions"
+                }
+            },
+            "required": [
+                "excluded_permissions",
+                "interactions",
+                "permissions"
+            ],
+            "title": "UserCurrentUserMetadata"
+        },
+        "FluffyInteractions": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "following": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "following"
+            ],
+            "title": "FluffyInteractions"
+        },
+        "AnnotationCurrentUserMetadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "excluded_permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "interactions": {
+                    "$ref": "#/definitions/TentacledInteractions"
+                },
+                "iq_by_action": {
+                    "$ref": "#/definitions/IqByAction"
+                }
+            },
+            "required": [
+                "excluded_permissions",
+                "interactions",
+                "iq_by_action",
+                "permissions"
+            ],
+            "title": "AnnotationCurrentUserMetadata"
+        },
+        "TentacledInteractions": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "cosign": {
+                    "type": "boolean"
+                },
+                "pyong": {
+                    "type": "boolean"
+                },
+                "vote": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "cosign",
+                "pyong",
+                "vote"
+            ],
+            "title": "TentacledInteractions"
+        },
+        "Range": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "content": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "content"
+            ],
+            "title": "Range"
+        },
+        "Artist": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "api_path": {
+                    "type": "string"
+                },
+                "header_image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg",
+                        ".png"
+                    ]
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".jpg",
+                        ".png"
+                    ]
+                },
+                "is_meme_verified": {
+                    "type": "boolean"
+                },
+                "is_verified": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "iq": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "api_path",
+                "header_image_url",
+                "id",
+                "image_url",
+                "is_meme_verified",
+                "is_verified",
+                "name",
+                "url"
+            ],
+            "title": "Artist"
+        },
+        "Media": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "native_uri": {
+                    "type": "string"
+                },
+                "provider": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "http",
+                        "https"
+                    ]
+                },
+                "start": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "provider",
+                "type",
+                "url"
+            ],
+            "title": "Media"
+        },
+        "SongRelationship": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "songs": {
+                    "type": "array",
+                    "items": {}
+                }
+            },
+            "required": [
+                "songs",
+                "type"
+            ],
+            "title": "SongRelationship"
+        },
+        "Stats": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "accepted_annotations": {
+                    "type": "integer"
+                },
+                "contributors": {
+                    "type": "integer"
+                },
+                "iq_earners": {
+                    "type": "integer"
+                },
+                "transcribers": {
+                    "type": "integer"
+                },
+                "unreviewed_annotations": {
+                    "type": "integer"
+                },
+                "verified_annotations": {
+                    "type": "integer"
+                },
+                "hot": {
+                    "type": "boolean"
+                },
+                "pageviews": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "accepted_annotations",
+                "contributors",
+                "hot",
+                "iq_earners",
+                "pageviews",
+                "transcribers",
+                "unreviewed_annotations",
+                "verified_annotations"
+            ],
+            "title": "Stats"
+        }
+    }
+}

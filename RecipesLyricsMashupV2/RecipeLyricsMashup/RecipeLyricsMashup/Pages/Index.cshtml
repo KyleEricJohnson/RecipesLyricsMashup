@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    var recipePuppyJson2 = ViewData["recipePuppyJson2"];
+    var recipePuppyJson = ViewData["recipePuppyJson"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<form action="" method="GET">
+
+    First name: <input type="text" name="sort">
+
+    <input type="submit" value="Go" />
+
+</form>
+
+<p>@recipePuppyJson</p>

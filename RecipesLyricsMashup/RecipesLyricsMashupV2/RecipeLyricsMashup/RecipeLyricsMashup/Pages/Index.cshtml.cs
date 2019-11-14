@@ -20,19 +20,20 @@ namespace RecipeLyricsMashup.Pages
 
         public IActionResult OnGet(string sort)
         {
-            string Endpoint = "http://www.recipepuppy.com/api/?q=" + sort;
-            string plantJson = GetData(Endpoint);
+            string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + sort;
+            string recipeJson = GetData(recipeEndpoint);
+            ViewData["recipePuppyJson"] = recipeJson;
             return Page();
         }
-        public string GetData(string recipePuppyEndpoint)
+        public string GetData(string endpoint)
         {
             string downloadedData = "";
 
             using (WebClient webClient = new WebClient())
             {
-                string recipePuppyJson = webClient.DownloadString(recipePuppyEndpoint);
-                downloadedData = webClient.DownloadString(recipePuppyEndpoint);
-                ViewData["recipePuppyJson"] = recipePuppyJson;
+                //string resultJson = webClient.DownloadString(endpoint);
+                downloadedData = webClient.DownloadString(endpoint);
+                
                 //string accessToken = "7K8utXpOpn-DCw9kzjn7n7vB6Y7ss0a0RqfmT-03_yA2BabKbstji0cBOoT_dVvI";
                 //string geniusEndpoint = "https://api.genius.com/search?q=Fireball&access_token=" + accessToken;
                 //string geniusJson = webClient.DownloadString(geniusEndpoint);

@@ -4,7 +4,8 @@
     ViewData["Title"] = "Home page";
     var recipePuppyJson2 = ViewData["recipePuppyJson2"];
     QuickTypeRecipe.Result[] recipePuppyJson = (QuickTypeRecipe.Result[]) ViewData["recipePuppyJson"];
-    var geniusResults = ViewData["geniusResults"];
+    //var geniusResults = ViewData["geniusResults"];
+    QuickType.Hit[] geniusResults = (QuickType.Hit[])ViewData["geniusResults"];
 }
 
 <div class="text-center">
@@ -40,4 +41,20 @@
 </table>
 
 <p>""</p>
-<p>@geniusResults</p>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Link</th>
+    </tr>
+    @{
+        foreach (QuickType.Hit hit in geniusResults)
+        {
+            <tr>
+                <td>@hit.Result.FullTitle</td>
+                <td>@hit.Result.PrimaryArtist.Name</td>
+                <td>@hit.Result.Url</td>
+            </tr>
+        }
+    }
+</table>

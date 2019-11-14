@@ -33,7 +33,9 @@ namespace RecipeLyricsMashup.Pages
             string accessToken = System.IO.File.ReadAllText("APIToken.txt");
             string geniusEndpoint = "https://api.genius.com/search?q="+ search + "&access_token=" + accessToken;
             string geniusResultsJson = GetData(geniusEndpoint);
-            ViewData["geniusResults"] = geniusResultsJson;
+            QuickType.SearchResult searchResults = QuickType.SearchResult.FromJson(geniusResultsJson);
+            QuickType.Hit[] results = searchResults.Response.Hits;
+            ViewData["geniusResults"] = results;
             return Page();
         }
         public string GetData(string endpoint)

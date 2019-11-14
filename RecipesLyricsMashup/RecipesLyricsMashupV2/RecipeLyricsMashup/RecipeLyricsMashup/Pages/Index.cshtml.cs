@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -18,11 +20,18 @@ namespace RecipeLyricsMashup.Pages
             _logger = logger;
         }
 
-        public IActionResult OnGet(string sort)
+        public IActionResult OnGet(string search)
         {
-            string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + sort;
+            Encoding ascii = Encoding.ASCII;
+            //string search = HttpUtility.HtmlEncode(sort);
+            Console.WriteLine(search);
+            string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + search;
             string recipeJson = GetData(recipeEndpoint);
             ViewData["recipePuppyJson"] = recipeJson;
+            string accessToken = System.IO.File.ReadAllText("APIToken.txt");
+            string geniusEndpoint = "https://api.genius.com/search?q="+ search + "&access_token=" + accessToken;
+            string geniusResultsJson = GetData(geniusEndpoint);
+            ViewData["geniusResults"] = geniusResultsJson;
             return Page();
         }
         public string GetData(string endpoint)

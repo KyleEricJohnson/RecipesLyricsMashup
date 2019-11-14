@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Home page";
     var recipePuppyJson2 = ViewData["recipePuppyJson2"];
-    var recipePuppyJson = ViewData["recipePuppyJson"];
+    QuickTypeRecipe.Result[] recipePuppyJson = (QuickTypeRecipe.Result[]) ViewData["recipePuppyJson"];
     var geniusResults = ViewData["geniusResults"];
 }
 
@@ -15,12 +15,29 @@
 
 <form action="" method="GET">
 
-    First name: <input type="text" name="sort">
+    First name: <input type="text" name="search">
 
     <input type="submit" value="Go" />
 
 </form>
 
-<p>@recipePuppyJson</p>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Ingredients</th>
+        <th>Link</th>
+    </tr>
+    @{ 
+        foreach (QuickTypeRecipe.Result result in recipePuppyJson)
+        {
+            <tr>
+                <td>@result.Title</td>
+                <td>@result.Ingredients</td>
+                <td>@result.Href</td>
+            </tr>
+        }
+    }
+</table>
+
 <p>""</p>
 <p>@geniusResults</p>

@@ -27,7 +27,9 @@ namespace RecipeLyricsMashup.Pages
             Console.WriteLine(search);
             string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + search;
             string recipeJson = GetData(recipeEndpoint);
-            ViewData["recipePuppyJson"] = recipeJson;
+            QuickTypeRecipe.Recipe recipeResult = QuickTypeRecipe.Recipe.FromJson(recipeJson);
+            QuickTypeRecipe.Result[] recipes = recipeResult.Results;
+            ViewData["recipePuppyJson"] = recipes;
             string accessToken = System.IO.File.ReadAllText("APIToken.txt");
             string geniusEndpoint = "https://api.genius.com/search?q="+ search + "&access_token=" + accessToken;
             string geniusResultsJson = GetData(geniusEndpoint);

@@ -27,7 +27,8 @@ namespace QuickTypeRecipe
         public Uri Href { get; set; }
 
         [JsonProperty("results")]
-        public Result[] Results { get; set; }
+        // public Result[] Results { get; set; }
+        public List<Result> Results { get; set; }
     }
 
     public partial class Result

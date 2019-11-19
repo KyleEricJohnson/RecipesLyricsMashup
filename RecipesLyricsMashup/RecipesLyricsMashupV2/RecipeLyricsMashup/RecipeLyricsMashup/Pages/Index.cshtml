@@ -3,9 +3,12 @@
 @{
     ViewData["Title"] = "Home page";
     var recipePuppyJson2 = ViewData["recipePuppyJson2"];
-    QuickTypeRecipe.Result[] recipePuppyJson = (QuickTypeRecipe.Result[]) ViewData["recipePuppyJson"];
+    // QuickTypeRecipe.Result[] recipePuppyJson = (QuickTypeRecipe.Result[]) ViewData["recipePuppyJson"];
+    List<QuickTypeRecipe.Result> recipePuppyJson = (List<QuickTypeRecipe.Result>)ViewData["recipePuppyJson"];
     //var geniusResults = ViewData["geniusResults"];
-    QuickType.Hit[] geniusResults = (QuickType.Hit[])ViewData["geniusResults"];
+    //QuickType.Hit[] geniusResults = (QuickType.Hit[])ViewData["geniusResults"];
+    List<QuickType.Hit> geniusResults = (List<QuickType.Hit>)ViewData["geniusResults"];
+
 }
 
 <div class="text-center">
@@ -22,7 +25,7 @@
 
 </form>
 
-<table>
+<table class="table table-bordered table-striped">
     <tr>
         <th>Title</th>
         <th>Ingredients</th>
@@ -41,7 +44,7 @@
 </table>
 
 <p>""</p>
-<table>
+<table class="table table-bordered table-striped">
     <tr>
         <th>Title</th>
         <th>Artist</th>

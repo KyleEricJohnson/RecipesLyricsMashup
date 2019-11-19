@@ -33,7 +33,9 @@ namespace QuickType
     public partial class Response
     {
         [JsonProperty("hits")]
-        public Hit[] Hits { get; set; }
+        //public Hit[] Hits { get; set; }
+
+        public List<Hit> Hits { get; set; }
     }
 
     public partial class Hit

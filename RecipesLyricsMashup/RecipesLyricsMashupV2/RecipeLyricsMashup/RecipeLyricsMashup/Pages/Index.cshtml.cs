@@ -20,23 +20,23 @@ namespace RecipeLyricsMashup.Pages
             _logger = logger;
         }
 
-        public IActionResult OnGet(string search)
+        public JsonResult OnGet(string search)
         {
-            Encoding ascii = Encoding.ASCII;
+           Encoding ascii = Encoding.ASCII; 
             //string search = HttpUtility.HtmlEncode(sort);
             Console.WriteLine(search);
             string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + search;
             string recipeJson = GetData(recipeEndpoint);
-            QuickTypeRecipe.Recipe recipeResult = QuickTypeRecipe.Recipe.FromJson(recipeJson);
-            QuickTypeRecipe.Result[] recipes = recipeResult.Results;
+            Recipe.Recipe recipeResult = Recipe.Recipe.FromJson(recipeJson);
+            Recipe.Result[] recipes = recipeResult.Results;
             ViewData["recipePuppyJson"] = recipes;
             string accessToken = System.IO.File.ReadAllText("APIToken.txt");
             string geniusEndpoint = "https://api.genius.com/search?q="+ search + "&access_token=" + accessToken;
             string geniusResultsJson = GetData(geniusEndpoint);
-            QuickType.SearchResult searchResults = QuickType.SearchResult.FromJson(geniusResultsJson);
-            QuickType.Hit[] results = searchResults.Response.Hits;
+            Search.SearchResult searchResults = Search.SearchResult.FromJson(geniusResultsJson);
+            Search.Hit[] results = searchResults.Response.Hits;
             ViewData["geniusResults"] = results;
-            return Page();
+            return JsonResult(results);
         }
         public string GetData(string endpoint)
         {

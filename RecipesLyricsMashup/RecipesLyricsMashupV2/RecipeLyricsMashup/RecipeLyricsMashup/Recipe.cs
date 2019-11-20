@@ -6,7 +6,7 @@
 //
 //    var recipe = Recipe.FromJson(jsonString);
 
-namespace QuickTypeRecipe
+namespace Recipe
 {
     using System;
     using System.Collections.Generic;
@@ -47,12 +47,12 @@ namespace QuickTypeRecipe
 
     public partial class Recipe
     {
-        public static Recipe FromJson(string json) => JsonConvert.DeserializeObject<Recipe>(json, QuickTypeRecipe.Converter.Settings);
+        public static Recipe FromJson(string json) => JsonConvert.DeserializeObject<Recipe>(json,Recipe.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this Recipe self) => JsonConvert.SerializeObject(self, QuickTypeRecipe.Converter.Settings);
+        public static string ToJson(this Recipe self) => JsonConvert.SerializeObject(self, Recipe.Converter.Settings);
     }
 
     internal static class Converter

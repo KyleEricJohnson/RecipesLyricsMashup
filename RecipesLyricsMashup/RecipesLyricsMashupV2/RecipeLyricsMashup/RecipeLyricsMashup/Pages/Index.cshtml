@@ -3,9 +3,9 @@
 @{
     ViewData["Title"] = "Home page";
     var recipePuppyJson2 = ViewData["recipePuppyJson2"];
-    QuickTypeRecipe.Result[] recipePuppyJson = (QuickTypeRecipe.Result[]) ViewData["recipePuppyJson"];
+    Recipe.Result[] recipePuppyJson = (Recipe.Result[]) ViewData["recipePuppyJson"];
     //var geniusResults = ViewData["geniusResults"];
-    QuickType.Hit[] geniusResults = (QuickType.Hit[])ViewData["geniusResults"];
+    Search.Hit[] geniusResults = (Search.Hit[])ViewData["geniusResults"];
 }
 
 <div class="text-center">
@@ -16,9 +16,9 @@
 
 <form action="" method="GET">
 
-    First name: <input type="text" name="search">
+    First name: <input class="form-group" type="text" name="search">
 
-    <input type="submit" value="Go" />
+    <input class="btn-primary" type="submit" value="Go" />
 
 </form>
 
@@ -29,7 +29,7 @@
         <th>Link</th>
     </tr>
     @{ 
-        foreach (QuickTypeRecipe.Result result in recipePuppyJson)
+        foreach (Recipe.Result result in recipePuppyJson)
         {
             <tr>
                 <td>@result.Title</td>
@@ -48,7 +48,7 @@
         <th>Link</th>
     </tr>
     @{
-        foreach (QuickType.Hit hit in geniusResults)
+        foreach (Search.Hit hit in geniusResults)
         {
             <tr>
                 <td>@hit.Result.FullTitle</td>

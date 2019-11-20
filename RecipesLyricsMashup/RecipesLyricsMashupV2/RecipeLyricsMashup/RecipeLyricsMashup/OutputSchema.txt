@@ -6,19 +6,19 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "QuickTypeRecipe.Result": {
+                "Recipe.Result": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/QuickTypeRecipeResult"
+                        "$ref": "#/definitions/RecipeResult"
                     }
                 }
             },
             "required": [
-                "QuickTypeRecipe.Result"
+                "Recipe.Result"
             ],
             "title": "Welcome"
         },
-        "QuickTypeRecipeResult": {
+        "RecipeResult": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -42,7 +42,7 @@
                 "result",
                 "type"
             ],
-            "title": "QuickTypeRecipeResult"
+            "title": "RecipeResult"
         },
         "Result": {
             "type": "object",

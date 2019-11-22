@@ -3,9 +3,10 @@
 @{
     ViewData["Title"] = "Home page";
     var recipePuppyJson2 = ViewData["recipePuppyJson2"];
-    QuickTypeRecipe.Result[] recipePuppyJson = (QuickTypeRecipe.Result[]) ViewData["recipePuppyJson"];
+    QuickTypeRecipe.Result[] recipePuppyRecipies = (QuickTypeRecipe.Result[]) ViewData["recipePuppyRecipies"];
     //var geniusResults = ViewData["geniusResults"];
     QuickType.Hit[] geniusResults = (QuickType.Hit[])ViewData["geniusResults"];
+    var search = ViewData["SearchString"]; //Morgan added 
 }
 
 <div class="text-center">
@@ -14,47 +15,51 @@
 </div>
 
 
-<form action="" method="GET">
+<form action="" method="GET" >
 
-    First name: <input type="text" name="search">
+    First name: <input type="text" name="search" value=@search> @*Morgan added "value" tag to repopulate the field with the last searched string value*@
 
     <input type="submit" value="Go" />
 
 </form>
 
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Ingredients</th>
-        <th>Link</th>
-    </tr>
-    @{ 
-        foreach (QuickTypeRecipe.Result result in recipePuppyJson)
+<table class="table table-striped"> @*Morgan added*@
+    <thead class="thead-dark"> @*Morgan added*@
+        <tr>
+            <th>Title</th>
+            <th>Ingredients</th>
+            <th>Link</th>
+        </tr>
+    </thead> @*Morgan added*@
+    @{
+        foreach (QuickTypeRecipe.Result result in recipePuppyRecipies)
         {
             <tr>
                 <td>@result.Title</td>
                 <td>@result.Ingredients</td>
-                <td>@result.Href</td>
+                <td><a href="@result.Href">@result.Href</a></td> @*Morgan added*@
             </tr>
         }
     }
 </table>
 
 <p>""</p>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Artist</th>
-        <th>Link</th>
-    </tr>
+<table class="table table-striped"> @*Morgan added*@
+    <thead class="thead-dark"> @*Morgan added*@
+        <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Link</th>
+        </tr>
+    </thead>
     @{
         foreach (QuickType.Hit hit in geniusResults)
         {
-            <tr>
-                <td>@hit.Result.FullTitle</td>
-                <td>@hit.Result.PrimaryArtist.Name</td>
-                <td>@hit.Result.Url</td>
-            </tr>
+        <tr>
+            <td>@hit.Result.FullTitle</td>
+            <td>@hit.Result.PrimaryArtist.Name</td>
+            <td><a href="@hit.Result.Url">@hit.Result.Url</a></td> @*Morgan added*@
+        </tr>
         }
     }
 </table>

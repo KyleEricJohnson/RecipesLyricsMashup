@@ -19,23 +19,26 @@ namespace RecipeLyricsMashup.Pages
         {
             _logger = logger;
         }
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; } //Morgan added
 
         public IActionResult OnGet(string search)
         {
             Encoding ascii = Encoding.ASCII;
             //string search = HttpUtility.HtmlEncode(sort);
-            Console.WriteLine(search);
+            //Console.WriteLine(search);
             string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + search;
             string recipeJson = GetData(recipeEndpoint);
             QuickTypeRecipe.Recipe recipeResult = QuickTypeRecipe.Recipe.FromJson(recipeJson);
             QuickTypeRecipe.Result[] recipes = recipeResult.Results;
-            ViewData["recipePuppyJson"] = recipes;
+            ViewData["recipePuppyRecipies"] = recipes;
             string accessToken = System.IO.File.ReadAllText("APIToken.txt");
             string geniusEndpoint = "https://api.genius.com/search?q="+ search + "&access_token=" + accessToken;
             string geniusResultsJson = GetData(geniusEndpoint);
             QuickType.SearchResult searchResults = QuickType.SearchResult.FromJson(geniusResultsJson);
             QuickType.Hit[] results = searchResults.Response.Hits;
             ViewData["geniusResults"] = results;
+            ViewData["SearchString"] = search; //Morgan Added
             return Page();
         }
         public string GetData(string endpoint)

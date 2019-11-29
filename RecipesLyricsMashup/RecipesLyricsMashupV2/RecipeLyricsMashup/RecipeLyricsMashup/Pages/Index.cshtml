@@ -16,7 +16,7 @@
 
 <form action="" method="GET">
 
-    First name: <input type="text" name="search">
+    Search recipes: <input type="text" name="search">
 
     <input type="submit" value="Go" />
 
@@ -28,13 +28,18 @@
         <th>Ingredients</th>
         <th>Link</th>
     </tr>
-    @{ 
+    @{
         foreach (QuickTypeRecipe.Result result in recipePuppyJson)
         {
             <tr>
                 <td>@result.Title</td>
                 <td>@result.Ingredients</td>
                 <td>@result.Href</td>
+            </tr>
+            <tr>
+                <td><form method="post">@Html.Hidden("search", @result.Title)<input type="submit" name="search" value="Search Title" /></form></td>
+                <td><form method="post">@Html.Hidden("search", @result.Ingredients)<input type="submit" value="Search ingredients"/></form></td>
+                <td></td>
             </tr>
         }
     }

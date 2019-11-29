@@ -8,13 +8,16 @@ using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using QuickType;
+using QuickTypeRecipe;
+using Result = QuickTypeRecipe.Result;
 
 namespace RecipeLyricsMashup.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-
+        
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -22,21 +25,40 @@ namespace RecipeLyricsMashup.Pages
 
         public IActionResult OnGet(string search)
         {
-            Encoding ascii = Encoding.ASCII;
-            //string search = HttpUtility.HtmlEncode(sort);
-            Console.WriteLine(search);
-            string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + search;
-            string recipeJson = GetData(recipeEndpoint);
-            QuickTypeRecipe.Recipe recipeResult = QuickTypeRecipe.Recipe.FromJson(recipeJson);
-            QuickTypeRecipe.Result[] recipes = recipeResult.Results;
+            bool searchValid = (!String.IsNullOrEmpty(search));
+
+
+            Result[] recipes = GetRecipes(search);
             ViewData["recipePuppyJson"] = recipes;
-            string accessToken = System.IO.File.ReadAllText("APIToken.txt");
-            string geniusEndpoint = "https://api.genius.com/search?q="+ search + "&access_token=" + accessToken;
-            string geniusResultsJson = GetData(geniusEndpoint);
-            QuickType.SearchResult searchResults = QuickType.SearchResult.FromJson(geniusResultsJson);
-            QuickType.Hit[] results = searchResults.Response.Hits;
+            //Encoding ascii = Encoding.ASCII;
+            Console.WriteLine(search);
+
+
+            Hit[] results = GetSongs(search);
             ViewData["geniusResults"] = results;
             return Page();
+        }
+        public IActionResult OnPost(string search)
+        {
+            Console.WriteLine(search);
+            return Page();
+        }
+        public Result[] GetRecipes(string search)
+        {
+            string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + search;
+            string recipeJson = GetData(recipeEndpoint);
+            Recipe recipeResult = Recipe.FromJson(recipeJson);
+            Result[] recipes = recipeResult.Results;
+            return recipes;
+        }
+        public Hit[] GetSongs(string search)
+        {
+            string accessToken = System.IO.File.ReadAllText("APIToken.txt");
+            string geniusEndpoint = "https://api.genius.com/search?q=" + search + "&access_token=" + accessToken;
+            string geniusResultsJson = GetData(geniusEndpoint);
+            SearchResult searchResults = SearchResult.FromJson(geniusResultsJson);
+            Hit[] results = searchResults.Response.Hits;
+            return results;
         }
         public string GetData(string endpoint)
         {
@@ -44,22 +66,9 @@ namespace RecipeLyricsMashup.Pages
 
             using (WebClient webClient = new WebClient())
             {
-                //string resultJson = webClient.DownloadString(endpoint);
                 downloadedData = webClient.DownloadString(endpoint);
-                
-                //string accessToken = "7K8utXpOpn-DCw9kzjn7n7vB6Y7ss0a0RqfmT-03_yA2BabKbstji0cBOoT_dVvI";
-                //string geniusEndpoint = "https://api.genius.com/search?q=Fireball&access_token=" + accessToken;
-                //string geniusJson = webClient.DownloadString(geniusEndpoint);
-                //QuickType.SearchResult searchResults = QuickType.SearchResult.FromJson(geniusJson);
-                ////Plant[] allPlants = Plant.FromJson(plantJson);
-                //QuickType.Hit[] results = searchResults.Response.Hits;
-                //foreach(QuickType.Hit result in results)
-                //{
-                //    Console.WriteLine(result.Result.Title);
-                //    string lyricsEndpoint = "https://api.genius.com/songs/"+ result.Result.Id + "?text_format=plain&access_token=" + accessToken;
-                //    string lyricsJson = webClient.DownloadString(lyricsEndpoint);
-                //    Console.WriteLine(result.Result.PrimaryArtist.Name);
-                //}
+
+
             }
             return downloadedData;
         }

@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\RecipesLyricsMashup",
+    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2",
+    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup",
+    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup\\RecipeLyricsMashup"
   ],
+  "SelectedNode": "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\.gitignore",
   "PreviewInSolutionExplorer": false
 }

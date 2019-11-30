@@ -31,7 +31,7 @@ namespace RecipeLyricsMashup.Pages
                 search = "jambalaya";
             }
             Result[] recipes = GetRecipes(search);
-            ViewData["recipePuppyJson"] = recipes;
+            ViewData["recipes"] = recipes;
             List<Hit> songs = GetSongs(search);
             ViewData["geniusResults"] = songs;
             return Page();

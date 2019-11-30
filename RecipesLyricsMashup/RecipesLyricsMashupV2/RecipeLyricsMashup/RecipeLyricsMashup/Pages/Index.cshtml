@@ -2,7 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    QuickTypeRecipe.Result[] recipes = (QuickTypeRecipe.Result[])ViewData["recipePuppyJson"];
+    QuickTypeRecipe.Result[] recipes = (QuickTypeRecipe.Result[])ViewData["recipes"];
     //var geniusResults = ViewData["geniusResults"];
     List<QuickType.Hit> geniusResults = (List<QuickType.Hit>)ViewData["geniusResults"];
 }
@@ -17,7 +17,7 @@
 
     Search recipes: <input type="text" name="search">
 
-    <input type="submit" value="Go" />
+    <input type="submit" value="Get recipes" />
 
 </form>
 
@@ -33,7 +33,7 @@
         foreach (QuickTypeRecipe.Result result in recipes)
         {
             <tr>
-                <td colspan="2">@result.Title</td>
+                <td colspan="2"><strong>@result.Title</strong></td>
                 <td>@result.Ingredients</td>
                 <td><a href="@result.Href" target="_blank">Go to Recipe</a></td>
             </tr>
@@ -46,23 +46,7 @@
                     <td><a href="@hit.Result.Url" target="_blank">Go to Lyrics</a></td>
                 </tr>
             }
-            <tr>
-                <td>
-                    <form method="post">
-                        @Html.Hidden("searchRecipe", @result.Title)
-                        @Html.Hidden("searchSongs", @result.Title)
-                        <input type="submit" name="search" value="Search Title" />
-                    </form>
-                </td>
-                <td>
-                    <form method="post">
-                        @Html.Hidden("searchRecipe", @result.Title)
-                        @Html.Hidden("searchSongs", @result.Ingredients)
-                        <input type="submit" value="Search ingredients" />
-                    </form>
-                </td>
-                <td></td>
-            </tr>
+            
         }
     }
 </table>

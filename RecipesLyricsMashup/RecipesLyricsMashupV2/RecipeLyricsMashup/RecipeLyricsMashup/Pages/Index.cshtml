@@ -2,10 +2,9 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    var recipePuppyJson2 = ViewData["recipePuppyJson2"];
-    QuickTypeRecipe.Result[] recipePuppyJson = (QuickTypeRecipe.Result[]) ViewData["recipePuppyJson"];
+    QuickTypeRecipe.Result[] recipes = (QuickTypeRecipe.Result[])ViewData["recipePuppyJson"];
     //var geniusResults = ViewData["geniusResults"];
-    QuickType.Hit[] geniusResults = (QuickType.Hit[])ViewData["geniusResults"];
+    List<QuickType.Hit> geniusResults = (List<QuickType.Hit>)ViewData["geniusResults"];
 }
 
 <div class="text-center">
@@ -22,44 +21,66 @@
 
 </form>
 
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Ingredients</th>
-        <th>Link</th>
-    </tr>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Ingredients</th>
+            <th>Link</th>
+        </tr>
+    </thead>
     @{
-        foreach (QuickTypeRecipe.Result result in recipePuppyJson)
+        foreach (QuickTypeRecipe.Result result in recipes)
         {
             <tr>
-                <td>@result.Title</td>
+                <td colspan="2">@result.Title</td>
                 <td>@result.Ingredients</td>
-                <td>@result.Href</td>
+                <td><a href="@result.Href" target="_blank">Go to Recipe</a></td>
             </tr>
+            foreach (QuickType.Hit hit in geniusResults)
+            {
+                <tr>
+                    <td></td>
+                    <td>@hit.Result.FullTitle</td>
+                    <td>@hit.Result.PrimaryArtist.Name</td>
+                    <td><a href="@hit.Result.Url" target="_blank">Go to Lyrics</a></td>
+                </tr>
+            }
             <tr>
-                <td><form method="post">@Html.Hidden("search", @result.Title)<input type="submit" name="search" value="Search Title" /></form></td>
-                <td><form method="post">@Html.Hidden("search", @result.Ingredients)<input type="submit" value="Search ingredients"/></form></td>
+                <td>
+                    <form method="post">
+                        @Html.Hidden("searchRecipe", @result.Title)
+                        @Html.Hidden("searchSongs", @result.Title)
+                        <input type="submit" name="search" value="Search Title" />
+                    </form>
+                </td>
+                <td>
+                    <form method="post">
+                        @Html.Hidden("searchRecipe", @result.Title)
+                        @Html.Hidden("searchSongs", @result.Ingredients)
+                        <input type="submit" value="Search ingredients" />
+                    </form>
+                </td>
                 <td></td>
             </tr>
         }
     }
 </table>
 
-<p>""</p>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Artist</th>
-        <th>Link</th>
-    </tr>
-    @{
-        foreach (QuickType.Hit hit in geniusResults)
-        {
-            <tr>
-                <td>@hit.Result.FullTitle</td>
-                <td>@hit.Result.PrimaryArtist.Name</td>
-                <td>@hit.Result.Url</td>
-            </tr>
-        }
-    }
-</table>
+
+@*Expand collapse row credit: https://stackoverflow.com/questions/16926752/expand-collapse-table-rows-with-jquery*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('tr').hide().filter(function () {
+            return $(this).find('td[colspan]').length;
+        }).addClass('header')
+            .css('display', 'table-row')
+            .click(function () {
+                $(this).nextUntil('tr.header').css('display', function (i, v) {
+                    return this.style.display === 'table-row' ? 'none' : 'table-row';
+                });
+            });
+    });
+</script>  

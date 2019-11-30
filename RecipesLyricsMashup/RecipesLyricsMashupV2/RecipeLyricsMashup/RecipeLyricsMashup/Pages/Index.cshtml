@@ -8,8 +8,8 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Recipe/Lyrics Mashup</h1>
+    <p>Use the search box to find delicious recipes and songs to listen to while you cook them!</p>
 </div>
 
 
@@ -40,7 +40,7 @@
             foreach (QuickType.Hit hit in geniusResults)
             {
                 <tr>
-                    <td></td>
+                    <td><img src="@hit.Result.HeaderImageThumbnailUrl" height="100" width="100"/></td>
                     <td>@hit.Result.FullTitle</td>
                     <td>@hit.Result.PrimaryArtist.Name</td>
                     <td><a href="@hit.Result.Url" target="_blank">Go to Lyrics</a></td>

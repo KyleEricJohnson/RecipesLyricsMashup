@@ -35,11 +35,13 @@
             <tr>
                 <td colspan="2"><strong>@result.Title</strong></td>
                 <td>@result.Ingredients</td>
+                <td></td>
                 <td><a href="@result.Href" target="_blank">Go to Recipe</a></td>
             </tr>
             foreach (QuickType.Hit hit in geniusResults)
             {
                 <tr>
+                    <td></td>
                     <td><img src="@hit.Result.HeaderImageThumbnailUrl" height="100" width="100"/></td>
                     <td>@hit.Result.FullTitle</td>
                     <td>@hit.Result.PrimaryArtist.Name</td>

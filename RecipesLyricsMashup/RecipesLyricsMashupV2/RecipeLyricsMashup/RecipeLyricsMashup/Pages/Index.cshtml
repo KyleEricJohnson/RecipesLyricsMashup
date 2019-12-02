@@ -5,76 +5,138 @@
     QuickTypeRecipe.Result[] recipes = (QuickTypeRecipe.Result[])ViewData["recipes"];
     //var geniusResults = ViewData["geniusResults"];
     List<QuickType.Hit> geniusResults = (List<QuickType.Hit>)ViewData["geniusResults"];
+
 }
+<head>
+    <style>
+        .sidehover:hover {
+            font-family: "Times New Roman";
+            font-size: 30px;
+            color: white;
+        }
+        table {
+            font-family: 'proxima-nova', sans-serif;
+            color: white;
+        }
+        h1{
+            font-family: 'proxima-nova', sans-serif;
+        }
+        body {
+            background-image: linear-gradient(tan, black, black);
+            color: white;
+        }
+        tr {
+            font-family: 'proxima-nova', sans-serif;
+            color: #E6E6E6;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        .hoverTable {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-y: scroll;
+            height: 400px;
+            display: block;
+        }
+    .hoverTable td{ 
+        padding:7px;
+    }
+    /* Define the default color for all the table rows */
+        .hoverTable tr {
+        }
+    /* Define the hover highlight color for the table row */
+            .hoverTable tr:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
 
-<div class="text-center">
-    <h1 class="display-4">Recipe/Lyrics Mashup</h1>
-    <p>Use the search box to find delicious recipes and songs to listen to while you cook them!</p>
-</div>
+        .SI {
+            background-color: transparent;
+            font-family: 'proxima-nova', sans-serif;
+            color: #E6E6E6;
+        }
 
 
-<form action="" method="GET">
 
-    Search recipes: <input type="text" name="search">
-
-    <input type="submit" value="Get recipes" />
-
-</form>
-<form action="" method="POST">
-
-    Get JSON output of songs: <input type="text" name="search">
-
-    <input type="submit" value="Get songs" />
-
-</form>
+    </style>
+</head>
 
 
-<table class="table table-striped">
-    <thead class="thead-dark">
-        <tr>
-            <th>Title</th>
-            <th>Ingredients</th>
-            <th>Link</th>
-        </tr>
-    </thead>
-    @{
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Recipe/Lyrics Mashup</h1>
+        <p>Use the search box to find delicious recipes and songs to listen to while you cook them!</p>
+    </div>
+    <form action="" method="GET">
+
+        <input type="text" class="SI" placeholder="Search Recipes" name="search">
+
+        <input type="submit" value="Get recipes" />
+
+    </form>
+    <hr />
+    <form action="" method="POST">
+
+        <input type="text" class="SI" name="search" placeholder="Search Songs">
+
+        <input type="submit" value="Get JSON" />
+
+    </form>
+    <hr />
+
+    <table class="hoverTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>Title</th>
+                <th>Ingredients</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        @{
         foreach (QuickTypeRecipe.Result result in recipes)
         {
-            <tr>
-                <td colspan="2"><strong>@result.Title</strong></td>
-                <td>@result.Ingredients</td>
-                <td></td>
-                <td><a href="@result.Href" target="_blank">Go to Recipe</a></td>
-            </tr>
+        <tr>
+            <td height="100" colspan="2" width="10%"><strong>@result.Title</strong></td>
+            <td height="100" width="50%">@result.Ingredients</td>
+            <td height="100" width="5%"></td>
+            <td height="100" width="20%"><a href="@result.Href" target="_blank">Go to Recipe</a></td>
+        </tr>
             foreach (QuickType.Hit hit in geniusResults)
             {
-                <tr>
-                    <td></td>
-                    <td><img src="@hit.Result.HeaderImageThumbnailUrl" height="100" width="100" /></td>
-                    <td>@hit.Result.FullTitle</td>
-                    <td>@hit.Result.PrimaryArtist.Name</td>
-                    <td><a href="@hit.Result.Url" target="_blank">Go to Lyrics</a></td>
-                </tr>
+            <tr>
+                <td class="nr" align="right" height="20" width="10%"></td>
+                <td height="20" width="5%"><img src="@hit.Result.HeaderImageThumbnailUrl" height="30" width="30" /></td>
+                <td height="20" width="50%">@hit.Result.FullTitle</td>
+                <td height="20" width="20%">@hit.Result.PrimaryArtist.Name</td>
+                <td height="20"><a href="@hit.Result.Url" target="_blank">Go to Lyrics</a></td>
+            </tr>
             }
 
         }
-    }
-</table>
+        }
+    </table>
+    <script type="text/javascript">var a = document.getElementsByClassName("nr");
+        var n = 0;
+        for (var i = 0; i < a.length; i++) {
+            if (n == 10) {
+                n = 0;
+            }
+            a[i].innerHTML = (n + 1) + ".";
+            n++;
+        }</script>
 
 
-@*Expand collapse row credit: https://stackoverflow.com/questions/16926752/expand-collapse-table-rows-with-jquery*@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    @*Expand collapse row credit: https://stackoverflow.com/questions/16926752/expand-collapse-table-rows-with-jquery*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('tr').hide().filter(function () {
-            return $(this).find('td[colspan]').length;
-        }).addClass('header')
-            .css('display', 'table-row')
-            .click(function () {
-                $(this).nextUntil('tr.header').css('display', function (i, v) {
-                    return this.style.display === 'table-row' ? 'none' : 'table-row';
+    <script type="text/javascript">$(document).ready(function () {
+            $('tr').hide().filter(function () {
+                return $(this).find('td[colspan]').length;
+            }).addClass('header')
+                .css('display', 'table-row')
+                .click(function () {
+                    $(this).nextUntil('tr.header').css('display', function (i, v) {
+                        return this.style.display === 'table-row' ? 'none' : 'table-row';
+                    });
                 });
-            });
-    });
-</script>
+        });</script>
+
+</body>

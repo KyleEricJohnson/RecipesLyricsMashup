@@ -7,29 +7,37 @@
     List<QuickType.Hit> geniusResults = (List<QuickType.Hit>)ViewData["geniusResults"];
 
 }
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <title>Recipe/Lyrics Mashup</title>
     <style>
         .sidehover:hover {
             font-family: "Times New Roman";
             font-size: 30px;
             color: white;
         }
+
         table {
             font-family: 'proxima-nova', sans-serif;
             color: white;
         }
-        h1{
+
+        h1 {
             font-family: 'proxima-nova', sans-serif;
         }
+
         body {
             background-image: linear-gradient(tan, black, black);
             color: white;
         }
+
         tr {
             font-family: 'proxima-nova', sans-serif;
             color: #E6E6E6;
             border-color: rgba(255, 255, 255, 0.05);
         }
+
         .hoverTable {
             width: 100%;
             border-collapse: collapse;
@@ -37,25 +45,23 @@
             height: 400px;
             display: block;
         }
-    .hoverTable td{ 
-        padding:7px;
-    }
-    /* Define the default color for all the table rows */
-        .hoverTable tr {
-        }
-    /* Define the hover highlight color for the table row */
-            .hoverTable tr:hover {
-                background-color: rgba(255, 255, 255, 0.1);
+
+            .hoverTable td {
+                padding: 7px;
             }
+            /* Define the default color for all the table rows */
+            .hoverTable tr {
+            }
+                /* Define the hover highlight color for the table row */
+                .hoverTable tr:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
 
         .SI {
             background-color: transparent;
             font-family: 'proxima-nova', sans-serif;
             color: #E6E6E6;
         }
-
-
-
     </style>
 </head>
 
@@ -65,7 +71,7 @@
         <h1 class="display-4">Recipe/Lyrics Mashup</h1>
         <p>Use the search box to find delicious recipes and songs to listen to while you cook them!</p>
     </div>
-    <form action="" method="GET">
+    <form action="#" method="GET">
 
         <input type="text" class="SI" placeholder="Search Recipes" name="search">
 
@@ -73,7 +79,7 @@
 
     </form>
     <hr />
-    <form action="" method="POST">
+    <form action="#" method="POST">
 
         <input type="text" class="SI" name="search" placeholder="Search Songs">
 
@@ -93,12 +99,12 @@
         @{
         foreach (QuickTypeRecipe.Result result in recipes)
         {
-        <tr>
-            <td height="100" colspan="2" width="10%"><strong>@result.Title</strong></td>
-            <td height="100" width="50%">@result.Ingredients</td>
-            <td height="100" width="5%"></td>
-            <td height="100" width="20%"><a href="@result.Href" target="_blank">Go to Recipe</a></td>
-        </tr>
+            <tr>
+                <td height="100" colspan="2" width="10%"><strong>@result.Title</strong></td>
+                <td height="100" width="50%">@result.Ingredients</td>
+                <td height="100" width="5%"></td>
+                <td height="100" width="20%"><a href="@result.Href" target="_blank">Go to Recipe</a></td>
+            </tr>
             foreach (QuickType.Hit hit in geniusResults)
             {
             <tr>
@@ -140,3 +146,4 @@
         });</script>
 
 </body>
+</html>

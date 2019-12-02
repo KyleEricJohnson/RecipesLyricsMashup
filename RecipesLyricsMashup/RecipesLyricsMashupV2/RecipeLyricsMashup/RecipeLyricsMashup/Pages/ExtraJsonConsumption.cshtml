@@ -1,0 +1,25 @@
+﻿@page
+@model ExtraJsonConsumptionModel
+@{
+    ViewData["Title"] = "Home page";
+    QuickTypeCountry.Welcome[] countries = (QuickTypeCountry.Welcome[])ViewData["Countries"];
+}
+
+<div>
+    <table class="table table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+        </tr>
+        @{
+            foreach (QuickTypeCountry.Welcome country in countries)
+            {
+                <tr>
+                    <td>@country.Name</td>
+                    <td>@country.Code</td>
+
+                </tr>
+            }
+        }
+    </table>
+</div>

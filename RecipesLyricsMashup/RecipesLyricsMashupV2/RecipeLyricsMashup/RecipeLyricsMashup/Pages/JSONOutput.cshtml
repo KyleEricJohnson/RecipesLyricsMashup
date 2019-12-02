@@ -1,0 +1,15 @@
+﻿@page
+@model RecipeLyricsMashup.Pages.JSONOutputModel
+@{
+    ViewData["Title"] = "JSONOutput";
+}
+
+<h1>JSONOutput</h1>
+
+<form method="GET" asp-page-handler="Output">
+
+    Output Song Results in JSON: <input type="text" name="outputSearch">
+
+    <input type="submit" value="Get songs" />
+
+</form>

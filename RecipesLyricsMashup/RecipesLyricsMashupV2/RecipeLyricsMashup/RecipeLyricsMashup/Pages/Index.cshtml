@@ -20,6 +20,14 @@
     <input type="submit" value="Get recipes" />
 
 </form>
+<form action="" method="POST">
+
+    Get JSON output of songs: <input type="text" name="search">
+
+    <input type="submit" value="Get songs" />
+
+</form>
+
 
 <table class="table table-striped">
     <thead class="thead-dark">
@@ -42,13 +50,13 @@
             {
                 <tr>
                     <td></td>
-                    <td><img src="@hit.Result.HeaderImageThumbnailUrl" height="100" width="100"/></td>
+                    <td><img src="@hit.Result.HeaderImageThumbnailUrl" height="100" width="100" /></td>
                     <td>@hit.Result.FullTitle</td>
                     <td>@hit.Result.PrimaryArtist.Name</td>
                     <td><a href="@hit.Result.Url" target="_blank">Go to Lyrics</a></td>
                 </tr>
             }
-            
+
         }
     }
 </table>
@@ -69,4 +77,4 @@
                 });
             });
     });
-</script>  
+</script>

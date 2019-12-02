@@ -36,7 +36,11 @@ namespace RecipeLyricsMashup.Pages
             ViewData["geniusResults"] = songs;
             return Page();
         }
-        
+        public JsonResult OnPost(string search)
+        {
+            List<Hit> geniusResults = GetSongs(search);
+            return new JsonResult(geniusResults);
+        }
         public Result[] GetRecipes(string search)
         {
             string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + search;

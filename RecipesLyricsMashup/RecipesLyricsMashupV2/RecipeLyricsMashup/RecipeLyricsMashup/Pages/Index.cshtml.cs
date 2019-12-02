@@ -44,6 +44,8 @@ namespace RecipeLyricsMashup.Pages
         public Result[] GetRecipes(string search)
         {
             string recipeEndpoint = "http://www.recipepuppy.com/api/?q=" + search;
+            string SearchString = search;
+            ViewData["Search"] = SearchString;
             string recipeJson = GetData(recipeEndpoint);
             Recipe recipeResult = Recipe.FromJson(recipeJson);
             Result[] recipes = recipeResult.Results;

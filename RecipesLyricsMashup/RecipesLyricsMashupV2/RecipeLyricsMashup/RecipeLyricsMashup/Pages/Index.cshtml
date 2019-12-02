@@ -5,6 +5,7 @@
     QuickTypeRecipe.Result[] recipes = (QuickTypeRecipe.Result[])ViewData["recipes"];
     //var geniusResults = ViewData["geniusResults"];
     List<QuickType.Hit> geniusResults = (List<QuickType.Hit>)ViewData["geniusResults"];
+    var Searched = ViewData["Search"];
 
 }
 <!DOCTYPE html>
@@ -87,6 +88,7 @@
 
     </form>
     <hr />
+    <h2>Showing results for: @Searched</h2>
 
     <table class="hoverTable">
         <thead class="thead-dark">

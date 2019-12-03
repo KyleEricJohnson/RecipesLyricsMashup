@@ -4,8 +4,12 @@
     "\\RecipesLyricsMashup",
     "\\RecipesLyricsMashup\\RecipesLyricsMashupV2",
     "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup",
-    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup\\RecipeLyricsMashup"
+    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup\\RecipeLyricsMashup",
+    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup\\RecipeLyricsMashup\\Pages",
+    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup\\RecipeLyricsMashup\\Properties",
+    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup\\RecipeLyricsMashup\\wwwroot",
+    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup\\RecipeLyricsMashup\\wwwroot\\css",
+    "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\RecipeLyricsMashup\\RecipeLyricsMashup\\wwwroot\\js"
   ],
-  "SelectedNode": "\\RecipesLyricsMashup\\RecipesLyricsMashupV2\\.gitignore",
   "PreviewInSolutionExplorer": false
 }
